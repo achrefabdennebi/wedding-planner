@@ -15,9 +15,10 @@ The principle services of the **project**:
 
 The main functionalities of **platform**:
 
-- Board page contain a list of budgets by categories
+- Board contain a list of budgets by categories
 - Calender contain all visits types (wedding space, pastry or travel agency)
-- Status and notifier page contain all accomplished tasks and control budgets
+- Filter calender by events or tasks
+- Status and notifier contain all accomplished tasks and control budgets
 - Search engine page: 
     - Search pastries
     - Search Wedding spaces
@@ -25,7 +26,12 @@ The main functionalities of **platform**:
 
 ## Design 
 
-This part contain a list of interfaces that represent all modules of web application.
+This part contain a diagram class that contain all models of web application.
+
+![Drag Racing](models.png)
 
 ## Technical part
+
+### How to run your application.
+
 

@@ -28,7 +28,7 @@ The main functionalities of **platform**:
 
 This part contain a diagram class that contain all models of web application.
 
-![Drag Racing](models.png)
+![Wedding class diagram ](models.png)
 
 ## Technical part
 

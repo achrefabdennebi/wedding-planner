@@ -5,38 +5,54 @@
     <head>
         <title>{% block title %}Wedding{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/e3f73924c9.js" crossorigin="anonymous"></script>
         <link href="{% static 'wedding/styles.css' %}" rel="stylesheet">
+    
+        <script src="https://kit.fontawesome.com/e3f73924c9.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Wedding Planner</h1>
-        <div>
-            {% if user.is_authenticated %}
-                Signed in as <strong>{{ user.username }}</strong>.
-            {% else %}
-                Not signed in
-            {% endif %}
-        </div>
-        <ul class="nav">
-            {% if user.is_authenticated %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Wedding Planner</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Tasks</a>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Wedding home
+                  <a class="nav-link" href="#">Calendar</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                {% if user.is_authenticated %}
+                <div class="nav-item dropdown">
+                    <a  id="navbarDropdownMenuLink" 
+                        class="nav-link dropdown-toggle" 
+                        href="#" 
+                        data-toggle="dropdown" 
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                        <strong>{{ user.username }}</strong>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            {% endif %}
-        </ul>
-        <hr>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </div>
+                {% endif %}
+              </form>
+            </div>
+          </nav>
         {% block body %}
         {% endblock %}
     </body>

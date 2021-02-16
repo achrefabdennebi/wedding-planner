@@ -34,4 +34,25 @@ This part contain a diagram class that contain all models of web application.
 
 ### How to run your application.
 
+### __1- Install requirements packages__
+
+```
+pip install -r requirements.txt
+```
+
+### __2- Run application__
+
+In the current project don't forget to install the package `virtualenv`.
+
+Run the following commands for starting the web application
+
+```
+    - virtualenv venv`
+    - source venv/Scripts/activate
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - python manage.py runserver
+```
+
+
 

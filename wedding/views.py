@@ -9,6 +9,18 @@ from .models import User
 def index(request):
     return render(request, "wedding/index.html")
 
+def tasks(request):
+    return render(request, "wedding/tasks.html")
+
+def calendar(request):
+    return render(request, "wedding/calendar.html")
+
+def search(request):
+    return render(request, "wedding/search.html")
+
+def board(request):
+    return render(request, "wedding/board.html")
+
 def login_view(request):
     if request.method == "POST":
 

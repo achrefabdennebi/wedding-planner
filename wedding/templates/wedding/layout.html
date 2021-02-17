@@ -18,18 +18,20 @@
           
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Tasks</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Calendar</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Board</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Search</a>
-                </li>
+                {% if user.is_authenticated %}
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'tasks' %}">Tasks</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'board' %}">Board</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search' %}">Search</a>
+                  </li>
+                {% endif %}
               </ul>
               <form class="form-inline my-2 my-lg-0">
                 {% if user.is_authenticated %}

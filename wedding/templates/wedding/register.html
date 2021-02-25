@@ -4,7 +4,9 @@
     <div class="text-center w-100">
         <form class="form-signin" action="{% url 'register' %}" method="post">
             {% csrf_token %}
-            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <div class="rounded-top logo">
+                <i class="fas fa-birthday-cake" ></i>
+            </div>
             <h1 class="h3 mb-3 font-weight-normal">User information</h1>
             <div class="form-group">
                 <label for="inputUsername" class="sr-only">Username</label>

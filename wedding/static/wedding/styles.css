@@ -12,6 +12,9 @@ html, body {
   max-height: 800px;
 }
 
+.logo {
+  font-size: 4em;
+}
 /*----------------------LOGIN-----------------------*/
 .login {
   display: -ms-flexbox;

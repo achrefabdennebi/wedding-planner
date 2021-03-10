@@ -5,7 +5,6 @@ from datetime import datetime
 class User(AbstractUser):
     pass
 
-
 class Task(models.Model):
     Title = models.CharField(max_length=64)
     Content = models.CharField(max_length=256)

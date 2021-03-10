@@ -15,6 +15,10 @@ html, body {
 .logo {
   font-size: 4em;
 }
+
+.far {
+  cursor: pointer;
+}
 /*----------------------LOGIN-----------------------*/
 .login {
   display: -ms-flexbox;

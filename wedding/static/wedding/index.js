@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const calendarEl = document.getElementById('calendar');
     const pieChartEl = document.getElementById('pieChart');
+    const formTask = document.getElementById('formTask');
 
     if (calendarEl) {
         const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -93,5 +94,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     }
+
+
+
+    formTask.addEventListener("submit", function (e) {
+        e.preventDefault()
+        const formData = new FormData(e.target)
+
+        const taskData = {
+            title: formData.get('title'),
+            budget: formData.get('budget'),
+            content: formData.get('content')
+        }
+
+        $('#addTasks').hide();
+        console.log(taskData)
+    });
 
 });

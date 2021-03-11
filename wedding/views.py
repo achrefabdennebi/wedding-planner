@@ -3,14 +3,17 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import User
+from .models import User, Task
 
 
 def index(request):
     return render(request, "wedding/index.html")
 
 def tasks(request):
-    return render(request, "wedding/tasks.html")
+    taskList = Task.objects.all()
+    return render(request, "wedding/tasks.html", {
+        "tasks" : taskList
+    })
 
 def calendar(request):
     return render(request, "wedding/calendar.html")

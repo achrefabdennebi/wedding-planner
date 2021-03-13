@@ -1,19 +1,52 @@
+import json
 from django.contrib.auth import authenticate, login, logout
+from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.db import IntegrityError
+from django.core.management.base import CommandError
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import User, Task
 
 
 def index(request):
     return render(request, "wedding/index.html")
 
+# List of tasks
+@login_required
 def tasks(request):
     taskList = Task.objects.all()
     return render(request, "wedding/tasks.html", {
         "tasks" : taskList
     })
+
+#Save task
+@csrf_exempt
+@login_required
+def createTask(request):
+    if (request.method != 'POST'):
+        return JsonResponse({"error": "POST request required."}, status=400)
+
+    data = json.loads(request.body)
+    print(data)
+    content = data["content"]
+    
+    try: 
+        task = Task(
+            Title = content['title'],
+            Content = content['content'],
+            Budget = content['budget']
+        )
+
+        task.save()
+    except IntegrityError:
+            # already been created because we got IntegrityError
+            raise CommandError("Post not saved")
+
+    return JsonResponse({'message': 'Task created successfully'}, status=200)
 
 def calendar(request):
     return render(request, "wedding/calendar.html")

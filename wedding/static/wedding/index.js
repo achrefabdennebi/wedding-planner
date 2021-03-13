@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: formData.get('content')
             }
     
-            $('#addTasks').hide();
+            $('#addTasks').modal('hide');
             console.log(taskData)
         });
     }

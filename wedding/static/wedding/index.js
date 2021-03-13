@@ -6,14 +6,30 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault()
             const formData = new FormData(e.target)
     
-            const taskData = {
-                title: formData.get('title'),
-                budget: formData.get('budget'),
-                content: formData.get('content')
+            const taskContent = {
+                content:  {
+                    title: formData.get('title'),
+                    budget: formData.get('budget'),
+                    content: formData.get('content')
+                }
             }
-    
+            /** Save form data */
+            addTask(taskContent).then(() => window.location.replace(`${window.location.origin}/tasks`));
             $('#addTasks').modal('hide');
-            console.log(taskData)
         });
+    }
+
+    /**
+     * Save task API
+     * @param {*} taskData 
+     */
+    async function addTask (taskData) {
+        debugger;
+        const  response = await fetch('/saveTask', {
+            method: 'POST',
+            body: JSON.stringify(taskData)
+        });
+
+        return await response.json(); 
     }
 });

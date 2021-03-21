@@ -31,7 +31,6 @@ def createTask(request):
         return JsonResponse({"error": "POST request required."}, status=400)
 
     data = json.loads(request.body)
-    print(data)
     content = data["content"]
     
     try: 
@@ -47,6 +46,15 @@ def createTask(request):
             raise CommandError("Post not saved")
 
     return JsonResponse({'message': 'Task created successfully'}, status=200)
+
+@csrf_exempt
+@login_required
+def deleteTask(request, task_id):
+    if (request.method != 'POST'):
+        return JsonResponse({'error', 'POST request required'}, status=400)
+    
+
+    return JsonResponse({'message': 'Task deleted successfully'}, status=200)
 
 def calendar(request):
     return render(request, "wedding/calendar.html")

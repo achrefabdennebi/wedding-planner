@@ -34,9 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (buttons) {
-        const deleteTask = function(msg, target) {
+        const deleteTask = async function(msg, target) {
             const {  dataset } = target;
-            console.log(msg, dataset);
+            const { id } = dataset;
+            const  response = await fetch(`/delete/${id}`, {
+                method: 'POST'
+            });
+    
+            const result = await response.json();
+            console.log(result);
         }
     
         const editTask = function(msg, target) {

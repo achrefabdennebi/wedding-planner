@@ -43,7 +43,7 @@ def createTask(request):
         task.save()
     except IntegrityError:
             # already been created because we got IntegrityError
-            raise CommandError("Post not saved")
+            raise CommandError("Task not saved")
 
     return JsonResponse({'message': 'Task created successfully'}, status=200)
 
@@ -53,6 +53,12 @@ def deleteTask(request, task_id):
     if (request.method != 'POST'):
         return JsonResponse({'error', 'POST request required'}, status=400)
     
+    try: 
+        task = Task.objects.get(id=task_id)
+        task.delete()
+    except IntegrityError:
+            # already been created because we got IntegrityError
+            raise CommandError("Task not saved")
 
     return JsonResponse({'message': 'Task deleted successfully'}, status=200)
 

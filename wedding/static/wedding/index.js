@@ -40,9 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const  response = await fetch(`/delete/${id}`, {
                 method: 'POST'
             });
-    
+            
+            // Get result response
             const result = await response.json();
-            console.log(result);
+
+            if (result) {
+                window.location.replace(`${window.location.origin}/tasks`)
+            }
+
         }
     
         const editTask = function(msg, target) {

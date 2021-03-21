@@ -35,27 +35,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (buttons) {
         const deleteTask = function(msg, target) {
-            console.log(msg, target);
+            const {  dataset } = target;
+            console.log(msg, dataset);
         }
     
         const editTask = function(msg, target) {
-            console.log(msg, target);
+            const {  dataset } = target;
+            console.log(msg, dataset);
         }
 
         buttons.forEach(node => {
             const { id } = node;
+    
+            // Listen to click on tasks btns clicks
             if (id === `deleteBtn` || id === `editBtn` ) {
                 node.addEventListener('click', (event) => {
                     const { target } = event;
-                    const { id } = target;
-
-                    if (id === `deleteBtn` ) {
-                       deleteTask(`Delete task`, target);
+                    
+                    if (target.closest(`#deleteBtn`)) {
+                        deleteTask('Delete', target.closest(`#deleteBtn`));
                     }
 
-                    if (id === `editBtn` ) {
-                        editTask(`Edit task`, target);
+                    if (target.closest(`#editBtn`)) {
+                        editTask('Edit', target.closest(`#editBtn`));
                     }
+                    
                 });
             }
         });

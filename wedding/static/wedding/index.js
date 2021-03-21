@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const formTask = document.getElementById('formTask');
+    const buttons  = document.querySelectorAll('button');
 
     if (formTask) {
         formTask.addEventListener("submit", function (e) {
@@ -24,12 +25,39 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {*} taskData 
      */
     async function addTask (taskData) {
-        debugger;
         const  response = await fetch('/saveTask', {
             method: 'POST',
             body: JSON.stringify(taskData)
         });
 
         return await response.json(); 
+    }
+
+    if (buttons) {
+        const deleteTask = function(msg, target) {
+            console.log(msg, target);
+        }
+    
+        const editTask = function(msg, target) {
+            console.log(msg, target);
+        }
+
+        buttons.forEach(node => {
+            const { id } = node;
+            if (id === `deleteBtn` || id === `editBtn` ) {
+                node.addEventListener('click', (event) => {
+                    const { target } = event;
+                    const { id } = target;
+
+                    if (id === `deleteBtn` ) {
+                       deleteTask(`Delete task`, target);
+                    }
+
+                    if (id === `editBtn` ) {
+                        editTask(`Edit task`, target);
+                    }
+                });
+            }
+        });
     }
 });

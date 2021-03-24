@@ -16,6 +16,7 @@ class Task(models.Model):
         return {
             "id": self.id,
             "title": self.Title,
+            "budget": self.Budget,
             "content": self.Content,
             "createdDate": self.CreatedDate.strftime("%b %d %Y, %I:%M %p"),
             "status": self.Status

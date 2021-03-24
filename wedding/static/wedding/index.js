@@ -56,8 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const response = await fetch(`/task/${id}`, {method:'GET'});
             const task = await response.json();
-            debugger;
-            console.log(task);
+            const { title , budget, content } = task;
+
+            // display values in input forms
+            document.querySelector('#title').value = title;
+            document.querySelector('#budget').value = budget;
+            document.querySelector('#description').value = content;
         }
 
         buttons.forEach(node => {

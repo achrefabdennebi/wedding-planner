@@ -10,6 +10,7 @@ urlpatterns = [
     path("board", views.board, name="board"),
     path("saveTask", views.createTask , name="createTask"),
     path("delete/<int:task_id>", views.deleteTask, name="deleteTask"),
+    path("task/<int:task_id>", views.getTask, name="getTask"),
     path("login", views.login_view, name="login"),
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register")

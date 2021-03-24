@@ -62,6 +62,20 @@ def deleteTask(request, task_id):
 
     return JsonResponse({'message': 'Task deleted successfully'}, status=200)
 
+@login_required
+def getTask(request, task_id):
+
+    if (request.method != 'GET'):
+        return JsonResponse({'error', 'GET request required'}, status=400)
+    
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        # already been created because we got DoesNotExist
+        raise CommandError('Task not exist')
+
+    return JsonResponse(task.serialize())
+
 def calendar(request):
     return render(request, "wedding/calendar.html")
 

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
             const taskContent = {
                 content:  {
+                    id: formData.get('id'),
                     title: formData.get('title'),
                     budget: formData.get('budget'),
                     content: formData.get('content')
@@ -57,11 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`/task/${id}`, {method:'GET'});
             const task = await response.json();
             const { title , budget, content } = task;
+            const task_id = task.id;
 
             // display values in input forms
+            const inputHidden = document.createElement("INPUT");
+            inputHidden.setAttribute("type", "hidden");
+            inputHidden.setAttribute("value", task_id );
+            inputHidden.setAttribute("name", 'id' );
             document.querySelector('#title').value = title;
             document.querySelector('#budget').value = budget;
             document.querySelector('#description').value = content;
+
+            formTask.append(inputHidden)
         }
 
         buttons.forEach(node => {

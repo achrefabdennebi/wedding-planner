@@ -33,14 +33,23 @@ def createTask(request):
     data = json.loads(request.body)
     content = data["content"]
     
-    try: 
-        task = Task(
-            Title = content['title'],
-            Content = content['content'],
-            Budget = content['budget']
-        )
+    try:
+        idTask = content['id']
+        if idTask is not None:
+            task = Task.objects.get(pk=idTask)
+            if (task is not None):
+                task.Title = content['title']
+                task.Content = content['content']
+                task.Budget = content['budget']
+                task.save()
+        else:
+            task = Task(
+                Title = content['title'],
+                Content = content['content'],
+                Budget = content['budget']
+            )
 
-        task.save()
+            task.save()
     except IntegrityError:
             # already been created because we got IntegrityError
             raise CommandError("Task not saved")

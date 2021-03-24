@@ -26,7 +26,10 @@
                     </div>
                     <div class="card-footer bg-transparent">
                         <div class="float-right">
-                            <button class="btn btn-light" id="editBtn" data-id="{{ task.id }}">
+                            <button class="btn btn-light" id="editBtn" 
+                                                          data-id="{{ task.id }}" 
+                                                          data-toggle="modal" 
+                                                          data-target="#addTasks">
                                 <i class="far fa-edit"></i>
                             </button>
                             <button class="btn btn-light" id="deleteBtn" data-id="{{ task.id }}">

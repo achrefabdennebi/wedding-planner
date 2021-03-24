@@ -50,9 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
     
-        const editTask = function(msg, target) {
+        const editTask = async function(msg, target) {
             const {  dataset } = target;
-            console.log(msg, dataset);
+            const { id } = dataset;
+
+            const response = await fetch(`/task/${id}`, {method:'GET'});
+            const task = await response.json();
+            debugger;
+            console.log(task);
         }
 
         buttons.forEach(node => {

@@ -7,6 +7,7 @@
         <link rel="shortcut icon" href="{%  static 'wedding/favicon.ico' %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'wedding/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'wedding/one-page-wonder.css' %}" rel="stylesheet">
         <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'libs/fullcalendar/main.min.css' %}" rel="stylesheet">
     </head>
@@ -62,7 +63,15 @@
           </nav>
         {% block body %}
         {% endblock %}
-        
+
+        <!-- Footer -->
+        <footer class="py-5 bg-black sticky-footer">
+          <div class="container">
+            <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2020</p>
+          </div>
+          <!-- /.container -->
+        </footer>
+
         <!-- Scripts -->
         <script src="{% static 'wedding/calendar.js'%}"></script>
         <script src="{% static 'wedding/pieChart.js'%}"></script>

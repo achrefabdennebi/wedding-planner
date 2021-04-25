@@ -1,9 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from phonenumber_field.modelfields import PhoneNumberField
 from datetime import datetime
 
 class User(AbstractUser):
-    pass
+    phone = PhoneNumberField(null=False, blank=True, unique=True)
+    is_wedding_planner = models.BooleanField(default=False)
+    is_cooker = models.BooleanField(default=False)
+
 
 class Task(models.Model):
     Title = models.CharField(max_length=64)
@@ -24,3 +28,21 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.Title} - {self.CreatedDate}"
+
+
+class CookerProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    specialty = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"Cooker  {self.user}"
+
+
+class WeddingPlannerProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    address =  models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"Wedding Planner {self.user}"
+    

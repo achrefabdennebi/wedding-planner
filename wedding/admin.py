@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import User, Task
+from .models import User, Task, CookerProfile, WeddingPlannerProfile
 from django.forms import Textarea
 
 # Register your models here.
@@ -15,4 +15,6 @@ class TaskAdmin(admin.ModelAdmin):
     form = TaskForm
 
 admin.site.register(User)
+admin.site.register(CookerProfile)
+admin.site.register(WeddingPlannerProfile)
 admin.site.register(Task, TaskAdmin)

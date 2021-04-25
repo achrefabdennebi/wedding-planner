@@ -13,5 +13,7 @@ urlpatterns = [
     path("task/<int:task_id>", views.getTask, name="getTask"),
     path("login", views.login_view, name="login"),
     path("logout", views.logout_view, name="logout"),
+    path('accounts/signup/weddingPlanner', views.registerWeddingPlanner, name='wedding_planner_signup'),
+    path('accounts/signup/cooker', views.registerCooker , name='cooker_signup'),
     path("register", views.register, name="register")
 ]

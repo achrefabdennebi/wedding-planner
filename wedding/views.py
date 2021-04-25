@@ -15,6 +15,7 @@ from .models import User, Task
 def index(request):
     return render(request, "wedding/index.html")
 
+
 # List of tasks
 @login_required
 def tasks(request):
@@ -56,6 +57,7 @@ def createTask(request):
 
     return JsonResponse({'message': 'Task created successfully'}, status=200)
 
+
 @csrf_exempt
 @login_required
 def deleteTask(request, task_id):
@@ -71,6 +73,7 @@ def deleteTask(request, task_id):
 
     return JsonResponse({'message': 'Task deleted successfully'}, status=200)
 
+
 @login_required
 def getTask(request, task_id):
 
@@ -85,14 +88,18 @@ def getTask(request, task_id):
 
     return JsonResponse(task.serialize())
 
+
 def calendar(request):
     return render(request, "wedding/calendar.html")
+
 
 def search(request):
     return render(request, "wedding/search.html")
 
+
 def board(request):
     return render(request, "wedding/board.html")
+
 
 def login_view(request):
     if request.method == "POST":
@@ -117,6 +124,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
+
 
 def register(request):
     if request.method == "POST":
@@ -143,6 +151,14 @@ def register(request):
         return HttpResponseRedirect(reverse("tasks"))
     else:
         return render(request, "wedding/register.html")
+
+
+def registerCooker(request):
+    return render(request, "wedding/registerCooker.html")
+
+
+def registerWeddingPlanner(request):
+    return render(request, "wedding/registerWeddingPlanner.html ")
 
 
 def logout_view(request):

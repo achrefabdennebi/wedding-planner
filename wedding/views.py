@@ -9,7 +9,7 @@ from django.core.management.base import CommandError
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import User, Task
+from .models import User, Task, CookerProfile
 
 
 def index(request):
@@ -154,7 +154,35 @@ def register(request):
 
 
 def registerCooker(request):
-    return render(request, "wedding/registerCooker.html")
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        specialties = request.POST['specialties']
+        password = request.POST["password"]
+        confirmation = request.POST["confirmation"]
+        if password != confirmation:
+            return render(request, "auctions/register.html", {
+                "message": "Passwords must match."
+            })
+        
+        # print(f'username: {username} \n email: {email} \n specialties: {specialties} \n password: {password} \n phone {phone}')
+
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password, phone=phone, is_cooker=True)
+            user.save()
+            cooker = CookerProfile.objects.create(user=user, specialty=specialties)
+            cooker.save()
+        except IntegrityError:
+            return render(request, "wedding/registerCooker.html", {
+                "message": "Username already taken."
+            })
+        
+        login(request, user)
+        return HttpResponseRedirect(reverse("tasks"))
+
+    else:
+        return render(request, "wedding/registerCooker.html")
 
 
 def registerWeddingPlanner(request):

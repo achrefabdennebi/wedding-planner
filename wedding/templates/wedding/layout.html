@@ -21,18 +21,27 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 {% if user.is_authenticated %}
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'tasks' %}">Tasks</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'board' %}">Board</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'search' %}">Search</a>
-                  </li>
+                  {% if  user.is_cooker  %}
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Contacts</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'tasks' %}">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'board' %}">Board</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'search' %}">Search</a>
+                    </li>
+                  {% endif %}
                 {% endif %}
               </ul>
               <form class="form-inline my-2 my-lg-0">

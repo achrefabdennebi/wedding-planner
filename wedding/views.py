@@ -217,6 +217,9 @@ def registerWeddingPlanner(request):
     else:
         return render(request, "wedding/registration/registerWeddingPlanner.html")
 
+def selectViewRegistrationType(request):
+    return render(request, "wedding/registration/selectUserTypeView.html") 
+    
 
 def logout_view(request):
     logout(request)

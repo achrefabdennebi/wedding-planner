@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 {% if user.is_authenticated %}
-                  {% if  user.is_cooker  %}
+                  {% if  user.is_cooker or user.is_wedding_planner %}
                     <li class="nav-item active">
                       <a class="nav-link" href="#">Settings</a>
                     </li>
@@ -64,7 +64,7 @@
                         <a class="nav-link" href="{% url 'login' %}">Log In</a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        <a class="nav-link" href="{% url 'select_user_type' %}">Register</a>
                     </div>
                 {% endif %}
               </form>

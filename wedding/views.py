@@ -135,7 +135,7 @@ def register(request):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(request, "auctions/register.html", {
+            return render(request, "wedding/registration/register.html", {
                 "message": "Passwords must match."
             })
 
@@ -144,13 +144,13 @@ def register(request):
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            return render(request, "wedding/register.html", {
+            return render(request, "wedding/registration/register.html", {
                 "message": "Username already taken."
             })
         login(request, user)
         return HttpResponseRedirect(reverse("tasks"))
     else:
-        return render(request, "wedding/register.html")
+        return render(request, "wedding/registration/register.html")
 
 
 def registerCooker(request):
@@ -162,7 +162,7 @@ def registerCooker(request):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(request, "auctions/register.html", {
+            return render(request, "wedding/registration/register.html", {
                 "message": "Passwords must match."
             })
         
@@ -174,7 +174,7 @@ def registerCooker(request):
             cooker = CookerProfile.objects.create(user=user, specialty=specialties)
             cooker.save()
         except IntegrityError:
-            return render(request, "wedding/registerCooker.html", {
+            return render(request, "wedding/registration/registerCooker.html", {
                 "message": "Username already taken."
             })
         
@@ -182,7 +182,7 @@ def registerCooker(request):
         return HttpResponseRedirect(reverse("tasks"))
 
     else:
-        return render(request, "wedding/registerCooker.html")
+        return render(request, "wedding/registration/registerCooker.html")
 
 
 def registerWeddingPlanner(request):
@@ -195,7 +195,7 @@ def registerWeddingPlanner(request):
         address =  request.POST["address"]
         description =  request.POST["description"]
         if password != confirmation:
-            return render(request, "auctions/register.html", {
+            return render(request, "wedding/registration/registerWeddingPlanner.html", {
                 "message": "Passwords must match."
             })
     
@@ -207,7 +207,7 @@ def registerWeddingPlanner(request):
             weddingPlanner = WeddingPlannerProfile.objects.create(user=user, address=address, description=description)
             weddingPlanner.save()
         except IntegrityError:
-            return render(request, "wedding/registerWeddingPlanner.html", {
+            return render(request, "wedding/registration/registerWeddingPlanner.html", {
                 "message": "Username already taken."
             })
         
@@ -215,7 +215,7 @@ def registerWeddingPlanner(request):
         return HttpResponseRedirect(reverse("tasks"))
 
     else:
-        return render(request, "wedding/registerWeddingPlanner.html")
+        return render(request, "wedding/registration/registerWeddingPlanner.html")
 
 
 def logout_view(request):

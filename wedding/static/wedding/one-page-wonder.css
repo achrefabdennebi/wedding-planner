@@ -3,9 +3,15 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-one-page-wonder/blob/master/LICENSE)
  */
+ @font-face {
+  font-family: "lato";
+  src: url("fonts/Lato-Regular.ttf") format('truetype'); ;
+}
 
+html, 
 body {
-  font-family: 'Lato';
+  font-family: 'lato';
+  font-weight: 800 !important;
 }
 
 h1,
@@ -14,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Catamaran';
+  font-family: 'lato';
   font-weight: 800 !important;
 }
 

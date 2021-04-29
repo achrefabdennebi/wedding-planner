@@ -93,6 +93,14 @@ def calendar(request):
     return render(request, "wedding/calendar.html")
 
 
+def getSettingsView(request):
+    return render(request, "wedding/settings.html")
+
+
+def getContactList(request):
+    return render(request, "wedding/contact.html")
+
+
 def search(request):
     return render(request, "wedding/search.html")
 
@@ -112,7 +120,11 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("tasks"))
+
+            if user.is_cooker or user.is_wedding_planner:
+                return HttpResponseRedirect(reverse("profile_settings"))
+            else:
+                return HttpResponseRedirect(reverse("tasks"))
         else:
             return render(request, "wedding/login.html", {
                 "message": "Invalid username and/or password."
@@ -179,7 +191,7 @@ def registerCooker(request):
             })
         
         login(request, user)
-        return HttpResponseRedirect(reverse("tasks"))
+        return HttpResponseRedirect(reverse("profile_contacts"))
 
     else:
         return render(request, "wedding/registration/registerCooker.html")
@@ -212,7 +224,7 @@ def registerWeddingPlanner(request):
             })
         
         login(request, user)
-        return HttpResponseRedirect(reverse("tasks"))
+        return HttpResponseRedirect(reverse("profile_contacts"))
 
     else:
         return render(request, "wedding/registration/registerWeddingPlanner.html")

@@ -16,5 +16,7 @@ urlpatterns = [
     path('accounts/signup/weddingPlanner', views.registerWeddingPlanner, name='wedding_planner_signup'),
     path('accounts/signup/cooker', views.registerCooker , name='cooker_signup'),
     path('accounts/selectUserType', views.selectViewRegistrationType, name='select_user_type'),
+    path('profile/settings', views.getSettingsView, name='profile_settings'),
+    path('profile/contacts', views.getContactList, name='profile_contacts'),
     path("register", views.register, name="register")
 ]

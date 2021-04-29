@@ -1,33 +1,31 @@
 {% extends  "wedding/layout.html" %}
 {% load static %}
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Select user type</h1>
-            <ul>
-                <li>
-                    <a href="{% url 'cooker_signup' %}">
-                        <div>Cooker</div>
-                        <img  src="{% static  'wedding/images/cooker.png' %}" alt="cooker" title="cooker" width="35" height="35" />
-                    </a>
-                </li>
-        
-                <li>
-                    <a href="{% url 'wedding_planner_signup' %}">
-                        <div>Wedding Place</div>
-                        <img  src="{% static 'wedding/images/wedding.png' %}" alt="wedding" title="wedding" width="35" height="35"  />
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="{% url 'register' %}">
-                        <div>Particular</div>
-                        <i class="far fa-user" ></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+<div class="content-user-type">
+    <div class="user-types">
+        <h1>Are you ?</h1>
+        <ul class="user-menu-types">
+            <li>
+                <a href="{% url 'cooker_signup' %}">
+                    <div>Cooker</div>
+                    <img  src="{% static  'wedding/images/cooker.png' %}" alt="cooker" title="cooker" width="35" height="35" />
+                </a>
+            </li>
+    
+            <li>
+                <a href="{% url 'wedding_planner_signup' %}">
+                    <div>Wedding Place</div>
+                    <img  src="{% static 'wedding/images/wedding.png' %}" alt="wedding" title="wedding" width="35" height="35"  />
+                </a>
+            </li>
+            
+            <li>
+                <a href="{% url 'register' %}">
+                    <div>Particular</div>
+                    <img  src="{% static 'wedding/images/user.png' %}" alt="wedding" title="wedding" width="35" height="35"  />
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 {% endblock %}

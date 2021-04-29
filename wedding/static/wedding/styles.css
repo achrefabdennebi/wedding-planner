@@ -72,6 +72,63 @@ html, body {
 
 /*-----------------------------------------------*/
 
+/*--------------------------------------------------
+            = Registration selection user type 
+----------------------------------------------------*/
+.content-user-type {
+  display: flex;
+  height: 83.5%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-types {
+  height: 76%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-title {
+  text-transform: capitalize;
+}
+
+.user-menu-types {
+  list-style: none;
+  display: flex;
+  margin-top: 15px;
+}
+
+.user-menu-types li {
+  border: 1px solid #e2e2e2;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+.user-menu-types li:hover {
+  background-color: #e2e2e2 ;
+}
+
+.user-menu-types li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em;
+}
+
+.user-menu-types li a:hover {
+  text-decoration: none;
+}
+
+.user-menu-types li a div {
+  margin-bottom: 15px;
+}
+
+.user-menu-types li a {
+  color: #555;
+}
 /*------------------------------------------------
             = Search result page
 --------------------------------------------------*/

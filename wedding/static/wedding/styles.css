@@ -13,7 +13,7 @@ html, body {
 }
 
 .h-100 {
-  height: 100%;
+  height: 79.12% !important;
 }
 
 .logo {
@@ -23,6 +23,12 @@ html, body {
 .far {
   cursor: pointer;
 }
+
+.iti {
+
+  display: flex;
+}
+
 /*----------------------LOGIN-----------------------*/
 .login {
   display: -ms-flexbox;
@@ -55,9 +61,6 @@ html, body {
   height: auto;
   padding: 10px;
   font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
 }
 .form-signin input[type="email"] {
   margin-bottom: -1px;

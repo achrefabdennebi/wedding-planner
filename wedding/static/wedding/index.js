@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginImageExifOrientation,
+        FilePondPluginFileValidateSize
+      );
+      
+      // Select the file input and use 
+      // create() to turn it into a pond
+      FilePond.parse(document.body);
+
     const formTask = document.getElementById('formTask');
     const buttons  = document.querySelectorAll('button');
     const input = document.querySelector("#inputPhone");

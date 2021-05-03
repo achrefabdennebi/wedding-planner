@@ -1,6 +1,4 @@
-html, body {
-    height: 100%;
-}
+
 /*-----------------------------------------------------*/
 .navbar {
   border-bottom:1px solid #e2e2e2;
@@ -13,7 +11,7 @@ html, body {
 }
 
 .h-100 {
-  height: 79.12% !important;
+  height: 100% !important;
 }
 
 .logo {
